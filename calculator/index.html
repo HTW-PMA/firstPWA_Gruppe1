@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue calculator</title>
+
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+    <link rel="manifest" href="manifest.json">
+    
+  </head>
+  <body>
+    <script>
+      if ("serviceWorker" in navigator)   {
+    navigator.serviceWorker.register("sw.js").then(registration =>{
+       console.log("SW Registered!");
+       console.log(registration); 
+    }) .catch(error => {
+        console.log("SW Registration Failed!");
+        console.log(error);
+    })
+}
+    </script>
+    <header>
+      <div class="text-center mt-2 mb-5 text-secondary col-md-12">
+      <h1>Vue calculator</h1>
+    </div>
+    </header>
+
+    <section id="calc">
+
+      <div class="container">
+        <div class="input-group input-group-sm mb-3 col-md-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">number 1</span>
+          <input v-model = "number1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+
+          <span class="input-group-text" id="inputGroup-sizing-sm">operation</span>
+          <input v-model = "operator" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+
+          <span class="input-group-text" id="inputGroup-sizing-sm">number 2</span>
+          <input v-model = "number2" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        </div>
+      </div>
+
+        <div class="container">
+          <div></div>
+          <button v-on:click="calculate()" type="button" class="btn btn-outline-success mt-3 mb-3">calculate</button>
+          <p class="fw-bold text-secondary">result: {{result}}</p>
+        </div>
+
+    </section>
+  </body>
+</html>
